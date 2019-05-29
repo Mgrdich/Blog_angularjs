@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" ng-app="myApp">
+<head>
     <title>TheNetNinja Angular Playlist</title>
-    <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-
-  </body>
+    <link href="content/css/styles.css" rel="stylesheet" type="text/css"/>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<div ng-controller="myController">
+{{name}}
+</div>
+</body>
 </html>
