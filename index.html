@@ -4,35 +4,11 @@
     <title>TheNetNinja Angular Playlist</title>
     <link href="content/css/styles.css" rel="stylesheet" type="text/css"/>
     <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="app.js"></script>
 </head>
 <body>
 <header ng-include="'header.html'"></header>
-<div class="content">
-    <div ng-controller="myController">
-     <!--   <span>{{name}}</span>
-        <ul>
-            <li ng-repeat="ninja in ninjas">{{ninja | uppercase}}</li>
-        </ul>
-     -->   <label for="filter">Filter</label>
-        <input id="filter" ng-model="search" type="text">
-
-        <button ng-click="order='name'">order by name</button>
-        <button ng-click="order='belt'">order by Belt</button>
-        <ul>
-            <li ng-repeat="ninja in ninjasObj|orderBy:order | filter:search" ng-show="ninja.available">
-                <h3>{{ninja.name}}</h3>
-                <div class="remove" ng-click="FilterArray(ninja.name)">x</div>
-                <span class="belt" style="background:{{ninja.belt}}">{{ninja.belt}}</span>
-            </li>
-        </ul>
-
-        <form action="">
-            <input type="text" placeholder="name" ng-model="">
-            <input type="text" placeholder="belt" ng-model="">
-            <input type="submit" value="ADD">
-        </form>
-    </div>
-</div>
+<!--<main ng-view></main>-->
 </body>
 </html>

@@ -1,8 +1,19 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ["ngRoute"]);
 
-app.config(function () { /*it will start before application runs*/
+app.config(['$routeProvider',function ($routeProvider) { /*it will start before application runs*/
 
-});
+    $routeProvider
+        .when('/home', {
+            templateUrl:'view/home.html'
+        })
+        .when('/directory', {
+            templateUrl:"view/directory.html",
+            controller: "myController"
+        })
+        /*.otherwise({
+            redirectTo:'/home'
+        });*/
+}]);
 
 app.run(function () { /*when it runs*/
 
@@ -11,8 +22,24 @@ app.run(function () { /*when it runs*/
 
 app.controller('myController', ['$scope', function (scope) {
 
+    scope.FilterArray = function (filtered) {
+        scope.ninjasObj = scope.ninjasObj.filter(function (iter) {
+            return iter.name !== filtered;
+        });
+    };
+
+    scope.addNinja = function () {
+        /*console.log(scope.newNinja);*/
+        scope.newNinja.available = true;
+        scope.ninjasObj.push(scope.newNinja);
+        scope.newNinja = {};//to clear the current shits in the
+    };
+
+
+
     scope.name = "mgo";
     scope.ninjas = ['yoshi', 'crystal', 'ryu', 'shaun'];
+
 
     scope.ninjasObj = [
         {
@@ -37,9 +64,4 @@ app.controller('myController', ['$scope', function (scope) {
         }
     ];
 
-    scope.FilterArray = function (filtered) {
-        scope.ninjasObj = scope.ninjasObj.filter(function (iter) {
-            return iter.name !== filtered;
-        });
-    };
 }]);
