@@ -1,18 +1,18 @@
-var app = angular.module('myApp', ["ngRoute"]);
+var app = angular.module('myApp', ['ngRoute']);
 
-app.config(['$routeProvider',function ($routeProvider) { /*it will start before application runs*/
+app.config(['$routeProvider', function ($routeProvider) { /*it will start before application runs*/
 
     $routeProvider
         .when('/home', {
-            templateUrl:'view/home.html'
+            templateUrl: 'view/home.html'
         })
         .when('/directory', {
-            templateUrl:"view/directory.html",
+            templateUrl: "view/directory.html",
             controller: "myController"
         })
-        /*.otherwise({
-            redirectTo:'/home'
-        });*/
+        .otherwise({
+            redirectTo: '/home'
+        });
 }]);
 
 app.run(function () { /*when it runs*/
@@ -20,7 +20,7 @@ app.run(function () { /*when it runs*/
 });
 
 
-app.controller('myController', ['$scope', function (scope) {
+app.controller('myController', ['$scope', '$http', function (scope, http) {
 
     scope.FilterArray = function (filtered) {
         scope.ninjasObj = scope.ninjasObj.filter(function (iter) {
@@ -36,32 +36,43 @@ app.controller('myController', ['$scope', function (scope) {
     };
 
 
-
     scope.name = "mgo";
     scope.ninjas = ['yoshi', 'crystal', 'ryu', 'shaun'];
 
-
-    scope.ninjasObj = [
-        {
-            name: "Yoshi",
-            belt: "black",
-            available:true
-        },
-        {
-            name: "Crystal",
-            belt: "yellow",
-            available:true
-        },
-        {
-            name: "Shaun",
-            belt: "black",
-            available:false
-        },
-        {
-            name: "Ryu",
-            belt: "red",
-            available:true
+    http.get({
+            method: 'GET',
+            url: "data/data.json",
         }
-    ];
+    ).then(
+            function (data) {
+                console.log(data);
+                scope.ninjasObj = data
+            }
+        );
+
+    /*
+        scope.ninjasObj = [
+            {
+                'name': "Yoshi",
+                'belt': "black",
+                'available':true
+            },
+            {
+                'name': "Crystal",
+                'belt': "yellow",
+                'available':true
+            },
+            {
+                'name': "Shaun",
+                'belt': "black",
+                'available':false
+            },
+            {
+                'name': "Ryu",
+                'belt': "red",
+                'available':true
+            }
+        ];
+    */
 
 }]);
