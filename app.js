@@ -39,14 +39,14 @@ app.controller('myController', ['$scope', '$http', function (scope, http) {
     scope.name = "mgo";
     scope.ninjas = ['yoshi', 'crystal', 'ryu', 'shaun'];
 
-    http.get({
+    http({
             method: 'GET',
             url: "data/data.json",
         }
     ).then(
-            function (data) {
-                console.log(data);
-                scope.ninjasObj = data
+            function (da) {
+                console.log(da);
+                scope.ninjasObj = da.data
             }
         );
 
