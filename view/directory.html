@@ -9,7 +9,7 @@
 
         <button ng-click="order='name'">order by name</button>
         <button ng-click="order='belt'">order by Belt</button>
-        <ul>
+        <ul class="Animate">
             <li ng-repeat="ninja in ninjasObj|orderBy:order | filter:search" ng-show="ninja.available">
                 <h3>{{ninja.name}}</h3>
                 <div class="remove" ng-click="FilterArray(ninja.name)">x</div>

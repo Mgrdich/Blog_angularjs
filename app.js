@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute','ngAnimate']);
 
 app.config(['$routeProvider', function ($routeProvider) { /*it will start before application runs*/
 
@@ -63,9 +63,11 @@ app.directive('randomPerson',[function () {
             title:'='
         },
         templateUrl:"view/random.html",
+        transclude:true,//so we can put child within it
         controller: function ($scope) {
             $scope.random = Math.floor(Math.random()*4);
-        }
+        },
+        //replace:true //to replace the custom directive with taag with outermost tag of that html
 
     };
 }]);
