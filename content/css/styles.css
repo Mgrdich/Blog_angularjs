@@ -56,6 +56,7 @@ main {
 
 .content {
     padding: 20px;
+    overflow: hidden;
 }
 .content h1 {
     text-align: center;
@@ -108,7 +109,7 @@ main {
     font-size: 22px;
 }
 
-.content input {
+.content input , .content textarea{
     width: 90%;
     padding: 10px 5%;
     border-radius: 10px;
@@ -167,8 +168,38 @@ main.ng-enter.ng-enter-active {
 .Animate li.ng-enter {
     transition:0.5s linear all;
     opacity:0;
+    transform: translateY(30px);
 }
 .Animate li.ng-enter.ng-enter-active {
     opacity:1;
+    transform: translateY(0);
 }
 
+.Animate li.ng-leave {
+    transition:0.5s linear all;
+    opacity:1;
+    transform: translateX(0);
+}
+.Animate li.ng-leave.ng-leave-active {
+    opacity:0;
+    transform: translateX(-100%);
+}
+
+.Animate li.ng-leave-stagger {
+    transition-delay: 0.2s;
+    transition-duration: 0;
+}
+
+
+input.ng-invalid.ng-touched ,textarea.ng-invalid.ng-touched {
+    border:1px crimson solid;
+}
+
+.error {
+    color:crimson;
+    display: block;
+}
+input[disabled='disabled'] {
+    cursor: not-allowed !important;
+    opacity: 0.4;
+}

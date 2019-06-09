@@ -11,6 +11,9 @@ app.config(['$routeProvider', function ($routeProvider) { /*it will start before
             templateUrl: "view/directory.html",
             controller: "myController"
         })
+        .when('/contact',{
+            templateUrl: "view/contact.html",
+        })
         .otherwise({
             redirectTo: '/home'
         });
@@ -51,6 +54,10 @@ app.controller('myController', ['$scope', '$http', function (scope, http) {
             }
         );
 
+
+    scope.removeAll = function () {
+     scope.ninjasObj.length = 0;
+    };
 
 }]);
 

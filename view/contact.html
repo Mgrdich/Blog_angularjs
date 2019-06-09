@@ -1,0 +1,17 @@
+<div class="content">
+    <form name="contactForm" novalidate>
+        <input type="text" placeholder="name" name="name" ng-required="true" ng-model="contact.name"/>
+        <div ng-show="contactForm.name.$touched && contactForm.name.$invalid">
+            <small class="error">Enter valid name</small>
+        </div>
+        <input type="email" placeholder="Email" name="email" ng-required="true" ng-model="contact.email"/>
+        <div ng-show="contactForm.email.$touched && contactForm.email.$invalid">
+            <small class="error">Enter valid Email</small>
+        </div>
+        <textarea name="message" id="" placeholder="Your Message" ng-required="true" ng-model="contact.message"></textarea>
+        <div ng-show="contactForm.message.$touched && contactForm.message.$invalid">
+            <small class="error">Enter a Meassage</small>
+        </div>
+        <input type="submit" value="Send" ng-disabled="contactForm.$invalid"/>
+    </form>
+</div>
