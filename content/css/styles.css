@@ -57,6 +57,10 @@ main {
 .content {
     padding: 20px;
 }
+.content h1 {
+    text-align: center;
+    font-size: 45px;
+}
 
 .content button,
 .content input[type="submit"] {
@@ -134,4 +138,9 @@ main {
     color: crimson;
     cursor: pointer;
     margin-left: 10px;
+}
+
+.random {
+    display: flex;
+    justify-content: center;
 }

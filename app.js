@@ -4,7 +4,8 @@ app.config(['$routeProvider', function ($routeProvider) { /*it will start before
 
     $routeProvider
         .when('/home', {
-            templateUrl: 'view/home.html'
+            templateUrl: 'view/home.html',
+            controller: "myController"
         })
         .when('/directory', {
             templateUrl: "view/directory.html",
@@ -50,29 +51,21 @@ app.controller('myController', ['$scope', '$http', function (scope, http) {
             }
         );
 
-    /*
-        scope.ninjasObj = [
-            {
-                'name': "Yoshi",
-                'belt': "black",
-                'available':true
-            },
-            {
-                'name': "Crystal",
-                'belt': "yellow",
-                'available':true
-            },
-            {
-                'name': "Shaun",
-                'belt': "black",
-                'available':false
-            },
-            {
-                'name': "Ryu",
-                'belt': "red",
-                'available':true
-            }
-        ];
-    */
 
+}]);
+
+
+app.directive('randomPerson',[function () {
+    return {
+        restrict:'EA',//element or attribute
+        scope : {
+            ninjas:'=',
+            title:'='
+        },
+        templateUrl:"view/random.html",
+        controller: function ($scope) {
+            $scope.random = Math.floor(Math.random()*4);
+        }
+
+    };
 }]);
